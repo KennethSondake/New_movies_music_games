@@ -1,0 +1,157 @@
+﻿/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+}
+
+header {
+    background-color: #4a4e69;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+nav {
+    background-color: #22223b;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a {
+    color: #c9ada7;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #9a8c98;
+}
+
+/* Container and Sidebar */
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+#sidebar {
+    width: 20%;
+    background-color: #22223b;
+    color: white;
+    padding: 20px;
+    min-width: 200px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#sidebar h2 {
+    text-align: center;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+#sidebar ul li {
+    margin: 10px 0;
+}
+
+#sidebar ul li a {
+    color: #c9ada7;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#sidebar ul li a:hover {
+    color: #9a8c98;
+}
+
+/* Main Section */
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* RSS Feed Styling */
+#netflix-updates {
+    margin-top: 20px;
+    background-color: #faf3dd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#netflix-updates h2 {
+    color: #4a4e69;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+#rss-feed {
+    list-style: none;
+    padding: 0;
+}
+
+#rss-feed li {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+#rss-feed li a {
+    text-decoration: none;
+    color: #22223b;
+    transition: color 0.3s, transform 0.2s;
+    font-weight: bold;
+}
+
+#rss-feed li a:hover {
+    color: #9a8c98;
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #4a4e69;
+    color: white;
+    margin-top: 20px;
+    border-radius: 0 0 10px 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #container {
+        flex-direction: column;
+    }
+
+    #sidebar {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        margin: 5px 0;
+    }
+}

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Music, Movies & Games</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Latest Music, Movies & Games</h1>
+    </header>
+
+    <nav>
+        <a href="music.html">Music</a>
+        <a href="movies.html">Movies</a>
+        <a href="games.html">Games</a>
+    </nav>
+
+    <div id="container">
+        <div id="sidebar">
+            <h2>Categories</h2>
+            <ul>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="movies.html">Movies</a></li>
+                <li><a href="games.html">Games</a></li>
+            </ul>
+        </div>
+
+        <main>
+            <p>Welcome to the hub of latest entertainment. Browse the categories above!</p>
+
+            <div id="netflix-updates">
+                <h2>Latest Netflix Releases</h2>
+                <ul id="rss-feed"></ul>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 YourWebsite. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      const rssFeedUrl = 'https://www.whats-on-netflix.com/feed/';
+      const corsProxy = 'https://api.allorigins.win/get?url=';
+
+      fetch(`${corsProxy}${encodeURIComponent(rssFeedUrl)}`)
+        .then(response => response.json())
+        .then(data => {
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(data.contents, 'application/xml');
+          const items = xmlDoc.querySelectorAll('item');
+
+          let feedList = document.getElementById('rss-feed');
+          items.forEach((item, index) => {
+            if (index < 5) {  // Limit to 5 latest updates
+              let listItem = document.createElement('li');
+              let title = item.querySelector('title').textContent;
+              let link = item.querySelector('link').textContent;
+
+              listItem.innerHTML = `<a href="${link}" target="_blank">${title}</a>`;
+              feedList.appendChild(listItem);
+            }
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching the RSS feed:', error);
+          let feedList = document.getElementById('rss-feed');
+          feedList.innerHTML = '<li>No updates available at the moment.</li>';
+        });
+    </script>
+</body>
+</html>
